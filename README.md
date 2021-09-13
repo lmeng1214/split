@@ -9,7 +9,7 @@ Split aims to change all of that. Originally conceieved by Lenny Meng in SBUHack
 For web scraping and categorization, we will use Python. For frontend, we are using Svelte. For the backend, we will use Express.JS. Everything will be powered by Node.JS. The database is hosted off off Amazon RDS with PostgreSQL. The frontend will also be hosted off of Amazon EC2.
 
 Contributors:
-Lenny Meng (lmeng1214@gmail.com)
-Evan Dunning (dunning0@purdue.edu)
-Huy Ahn Bui (bui13@purdue.edu)
-John Crawford V (crawfo58@purdue.edu)
+Lenny Meng (lmeng1214@gmail.com) <br />
+Evan Dunning (dunning0@purdue.edu) <br />
+Huy Ahn Bui (bui13@purdue.edu) <br />
+John Crawford V (crawfo58@purdue.edu) <br />
