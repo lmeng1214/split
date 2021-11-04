@@ -1,10 +1,8 @@
 import App from './App.svelte';
+import Search from './Search.svelte';
 
-const app = new App({
+const app = new Search({
 	target: document.body,
-	props: {
-		name: 'world'
-	}
 });
 
 export default app;
