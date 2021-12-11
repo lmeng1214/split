@@ -144,14 +144,39 @@
     }
 
     async function starFunc(args) {
-        const aID = args;
-        console.log(aID.value);
+        let button = document.getElementById(args);
+        //console.log(button)
+
+        const aID = button.id
+        console.log(aID)
 
         const urlParams = new URLSearchParams(window.location.search);
         const uID = urlParams.get('uID');
         console.log(uID);
 
-
+        axios.post('http://localhost:8080/updateFavorite/', {
+            article_id: aID,
+            account_id: uID
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            // handle success
+            console.log(response);
+            if(response.data == "Inserted") {
+                button.innerText = "Delete Fav?"
+            } else {
+                button.innerText = "Add Fav?"
+            }
+        })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     }
 
     async function submitFunc(e) {
@@ -185,9 +210,10 @@
                 btn.setAttribute("style","background-color:yellow");
                 btn.setAttribute("id", response.data[i].article_id.toString());
                 //btn.setAttribute("name", i.toString());
+                //btn.setAttribute('onclick', "return starFunc(this.id);");
                 btn.addEventListener('click', function() {
-                    console.log(this.id);
-                    console.log(this.name);
+                   // console.log(this.id);
+                    //console.log(this.name);
                     starFunc(this.id);
                 }, false);
                 elem.appendChild(btn);
@@ -206,7 +232,7 @@
 </script>
 
 <main>
-    <h1>Split8</h1>
+    <h1>Split1</h1>
 
     <form id="form2" path="post2">
         <div class="row"><input class="place-holder-center" type="text" id="uID" placeholder="New User?"></div>
