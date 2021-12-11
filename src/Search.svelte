@@ -34,6 +34,67 @@
         aID.value = '';
     }
 
+    async function insertUser(e) {
+        e.preventDefault();
+        const form = document.getElementById('form2');
+
+        const uID = form.elements['uID'];
+        console.log(uID.value);
+
+        axios.post('http://localhost:8080/insertUser/', {
+            account_id: uID.value,
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            // handle success
+            console.log(response);
+        })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                const url = new URL(window.location.href);
+                url.searchParams.set('uID', uID.value);
+                window.history.pushState({ path: url.href }, '', url.href);
+            });
+
+        //uID.value = '';
+    }
+
+    async function getUser(e) {
+        e.preventDefault();
+        const form = document.getElementById('form2');
+
+        const uID2 = form.elements['uID2'];
+        console.log(uID2.value);
+        console.log("check")
+
+        axios.post('http://localhost:8080/getUser/', {
+            account_id: uID2.value,
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            // handle success
+            console.log(response);
+        })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                const url = new URL(window.location.href);
+                url.searchParams.set('uID', uID2.value);
+                window.history.pushState({ path: url.href }, '', url.href);
+            });
+
+        //uID.value = '';
+    }
+
     async function insertFunc(e) {
         e.preventDefault();
         const form = document.getElementById('form1');
@@ -82,6 +143,17 @@
         url.value = '';
     }
 
+    async function starFunc(args) {
+        const aID = args;
+        console.log(aID.value);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const uID = urlParams.get('uID');
+        console.log(uID);
+
+
+    }
+
     async function submitFunc(e) {
         e.preventDefault();
         const form = document.getElementById('form1');
@@ -98,13 +170,27 @@
             // handle success
             console.log(response.data);
             console.log(Object.keys(response.data).length);
-            output.innerText = ""
+            //output.innerText = ""
+            const elem = document.getElementById("output")
             for (let i = 0; i < Object.keys(response.data).length; i++) {
-                output.innerText += "Article ID: " + response.data[i].article_id +
+                var node = document.createElement("H2");
+                node.innerText = "Article ID: " + response.data[i].article_id +
                     " + Source ID: " + response.data[i].source_id +
                     "\n Pub Date: " + response.data[i].pub_date +
                     "\n Title: " + response.data[i].title +
                     " + URL: " + response.data[i].url + "\n\n";
+                elem.appendChild(node);
+                var btn = document.createElement("BUTTON");
+                btn.innerText = "STAR"
+                btn.setAttribute("style","background-color:yellow");
+                btn.setAttribute("id", response.data[i].article_id.toString());
+                //btn.setAttribute("name", i.toString());
+                btn.addEventListener('click', function() {
+                    console.log(this.id);
+                    console.log(this.name);
+                    starFunc(this.id);
+                }, false);
+                elem.appendChild(btn);
             }
         })
         .catch(function (error) {
@@ -120,7 +206,14 @@
 </script>
 
 <main>
-    <h1>Split</h1>
+    <h1>Split8</h1>
+
+    <form id="form2" path="post2">
+        <div class="row"><input class="place-holder-center" type="text" id="uID" placeholder="New User?"></div>
+        <div class="row"><input type="submit" value="Submit New User" id="l" class="full" on:click={insertUser}></div>
+        <div class="row"><input class="place-holder-center" type="text" id="uID2" placeholder="Returning User?"></div>
+        <div class="row"><input type="submit" value="Submit Returning User" id="l2" class="full" on:click={getUser}></div>
+    </form>
 
     <form id="form1" path="post">
         <div class="row"><input class="place-holder-center" type="text" id="aID" placeholder="Enter Article ID"></div>
@@ -134,7 +227,7 @@
         <div class="row"><input type="submit" value="Delete Article" id="d" class="full" on:click={deleteFunc}></div>
     </form>
 
-    <h2 id="output"></h2>
+    <div id="output"></div>
 </main>
 
 <style>
