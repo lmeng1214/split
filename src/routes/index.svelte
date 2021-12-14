@@ -1,8 +1,8 @@
 <script lang="ts">
 	import axios from 'axios';
 
-	import DisplayComponents from '../shared/Main/DisplayComponents.svelte';
 	import NavBar from '../shared/NavBar.svelte';
+	import Feed from '../shared/Main/Feed.svelte';
 
 	let articles;
 
@@ -14,9 +14,7 @@
 
 <main>
 	<NavBar />
-	<table>
-		<DisplayComponents {articles} />
-	</table>
+	<Feed {articles}/>
 </main>
 
 <style>
