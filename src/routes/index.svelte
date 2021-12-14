@@ -1,18 +1,28 @@
 <script lang="ts">
-    import Search from "../shared/Search.svelte";
-	export let name: string;
+	import axios from 'axios';
+
+	import DisplayComponents from '../shared/Main/DisplayComponents.svelte';
+	import NavBar from '../shared/NavBar.svelte';
+
+	let articles;
+
+	axios.get("http://localhost:8080/").then(function (res) {
+		console.log("INDEX >> Get Articles");
+		articles = res.data;
+	})
 </script>
 
 <main>
-	<p>Test</p>
+	<NavBar />
+	<table>
+		<DisplayComponents {articles} />
+	</table>
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
 		max-width: 240px;
-		margin: 0 auto;
 	}
 
 	h1 {
