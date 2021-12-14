@@ -2,7 +2,7 @@
 	import axios from 'axios';
 
 	import NavBar from '../shared/NavBar.svelte';
-	import Feed from '../shared/Main/Feed.svelte';
+	import Feed from '../shared/Main Feed/Feed.svelte';
 
 	let articles;
 

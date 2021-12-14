@@ -1,7 +1,7 @@
 
 <table>
 	<tr>
-		<td class='logo'><span style='color: #0050C8'>|</span>SP <span style='color: #D70000'>|</span>IT</td>
+		<td class='logo'><a class='logo' href='/'><span style='color: #0050C8'>|</span>SP <span style='color: #D70000'>|</span>IT</a></td>
 		<td class='searchbar'>Your Search Component Here!</td>
 		<td class='account'>Your Account Component Here!</td>
 	</tr>
@@ -12,7 +12,10 @@
 
 		.logo {
         font-family: 'Readex Pro', sans-serif;
-				font-size: 60px;
-				vertical-align: text-top;
-		}
+        font-size: 60px;
+        vertical-align: text-top;
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+    }
 </style>
