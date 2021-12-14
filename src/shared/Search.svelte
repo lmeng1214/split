@@ -191,7 +191,7 @@
         // const outputPub = document.querySelector('#outputPub');
         // outputPub.innerText = "December"
 
-        axios.get('http://localhost:8080/selectAll').then(function (response) {
+        axios.get('http://localhost:8080/').then(function (response) {
             // handle success
             console.log(response.data);
             console.log(Object.keys(response.data).length);
@@ -286,44 +286,42 @@
     }
 </script>
 
-<main>
-    <h1>Split1</h1>
+<h1>Split1</h1>
 
-    <form id="form2" path="post2">
-        <div class="row"><input class="place-holder-center" type="text" id="uID" placeholder="New User?"></div>
-        <div class="row"><input type="submit" value="Submit New User" id="l" class="full" on:click={insertUser}></div>
-        <div class="row"><input class="place-holder-center" type="text" id="uID2" placeholder="Returning User?"></div>
-        <div class="row"><input type="submit" value="Submit Returning User" id="l2" class="full" on:click={getUser}></div>
-    </form>
+<form id="form2" path="post2">
+    <div class="row"><input class="place-holder-center" type="text" id="uID" placeholder="New User?"></div>
+    <div class="row"><input type="submit" value="Submit New User" id="l" class="full" on:click={insertUser}></div>
+    <div class="row"><input class="place-holder-center" type="text" id="uID2" placeholder="Returning User?"></div>
+    <div class="row"><input type="submit" value="Submit Returning User" id="l2" class="full" on:click={getUser}></div>
+</form>
 
-    <form id="form1" path="post">
-        <div class="row"><input class="place-holder-center" type="text" id="aID" placeholder="Enter Article ID"></div>
-        <div class="row"><input class="place-holder-center" type="text" id="sID" placeholder="Enter Source ID"></div>
-        <div class="row"><input class="place-holder-center" type="text" id="tID" placeholder="Enter Topic ID"></div>
-        <div class="row"><input class="place-holder-center" type="text" id="title" placeholder="Enter Title"></div>
-        <div class="row"><input class="place-holder-center" type="text" id="url" placeholder="Enter URL"></div>
-        <div class="row"><input type="submit" value="Enter Article" id="t" class="full" on:click={insertFunc}></div>
-        <div class="row"><input type="submit" value="Display All Articles" id="s" class="full" on:click={submitFunc}></div>
-        <div class="row"><input class="place-holder-center" type="text" id="aID2" placeholder="Enter Article ID to Delete"></div>
-        <div class="row"><input type="submit" value="Delete Article" id="d" class="full" on:click={deleteFunc}></div>
-    </form>
+<form id="form1" path="post">
+    <div class="row"><input class="place-holder-center" type="text" id="aID" placeholder="Enter Article ID"></div>
+    <div class="row"><input class="place-holder-center" type="text" id="sID" placeholder="Enter Source ID"></div>
+    <div class="row"><input class="place-holder-center" type="text" id="tID" placeholder="Enter Topic ID"></div>
+    <div class="row"><input class="place-holder-center" type="text" id="title" placeholder="Enter Title"></div>
+    <div class="row"><input class="place-holder-center" type="text" id="url" placeholder="Enter URL"></div>
+    <div class="row"><input type="submit" value="Enter Article" id="t" class="full" on:click={insertFunc}></div>
+    <div class="row"><input type="submit" value="Display All Articles" id="s" class="full" on:click={submitFunc}></div>
+    <div class="row"><input class="place-holder-center" type="text" id="aID2" placeholder="Enter Article ID to Delete"></div>
+    <div class="row"><input type="submit" value="Delete Article" id="d" class="full" on:click={deleteFunc}></div>
+</form>
 
-    <form id="form3" path="post">
-        <div class="row">
-            <select class="place-holder-center" name="aSearch" id="sA">
-                <option value="Source ID">Source ID</option>
-                <option value="Topic ID">Topic ID</option>
-            </select>
-            <select class="place-holder-center" name="aOrder" id="sO">
-                <option value="Asc">Asc</option>
-                <option value="Desc">Desc</option>
-            </select>
-        </div>
-        <div class="row"><input type="submit" value="Display Sorted Articles" id="dA" class="full" on:click={searchFunc}></div>
-    </form>
+<form id="form3" path="post">
+    <div class="row">
+        <select class="place-holder-center" name="aSearch" id="sA">
+            <option value="Source ID">Source ID</option>
+            <option value="Topic ID">Topic ID</option>
+        </select>
+        <select class="place-holder-center" name="aOrder" id="sO">
+            <option value="Asc">Asc</option>
+            <option value="Desc">Desc</option>
+        </select>
+    </div>
+    <div class="row"><input type="submit" value="Display Sorted Articles" id="dA" class="full" on:click={searchFunc}></div>
+</form>
 
-    <div id="output"></div>
-</main>
+<div id="output"></div>
 
 <style>
     main {
