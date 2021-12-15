@@ -1,7 +1,48 @@
 <script>
 	import dayjs from 'dayjs';
+	import axios from 'axios';
 
 	export let article;
+
+	async function starFunc(args) {
+		console.log("args: ", args)
+		let button = document.getElementById(args);
+		console.log("Button: ", button)
+
+		console.log(button.textContent)
+
+		let aID;
+		if(button !== null) aID = button.id
+		console.log("aID: ", aID)
+
+		// const urlParams = new URLSearchParams(window.location.search);
+		// const uID = urlParams.get('uID');
+		// console.log(uID);
+
+		axios.post('http://localhost:8080/updateFavorite/', {
+			article_id: aID,
+			account_id: 1
+		}, {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(function (response) {
+			// handle success
+			console.log(response);
+			if(response.data == "Inserted") {
+				button.textContent = "Delete Fav?"
+			} else {
+				button.textContent = "Add Fav?"
+			}
+		})
+			.catch(function (error) {
+				// handle error
+				console.log(error);
+			})
+			.then(function () {
+				// always executed
+			});
+	}
 </script>
 
 <td>
@@ -17,5 +58,9 @@
 		<tr>
 			Published {dayjs(article.pub_date).format("MMM D, YYYY h:mm a")}
 		</tr>
+<!--		<tr>-->
+<!--			Source id: {article.source_id}-->
+<!--		</tr>-->
+		<button style='background-color:yellow' id={article.article_id} on:click={(e) => starFunc(e.target.id)}>STAR</button>
 	</table>
 </td>

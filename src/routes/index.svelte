@@ -9,11 +9,12 @@
 	axios.get("http://localhost:8080/").then(function (res) {
 		console.log("INDEX >> Get Articles");
 		articles = res.data;
+		console.log(articles)
 	})
 </script>
 
 <main>
-	<NavBar />
+	<NavBar bind:articles={articles} />
 	<Feed {articles}/>
 </main>
 
