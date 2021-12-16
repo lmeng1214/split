@@ -335,6 +335,10 @@
         margin-bottom: 20px;
         width: 50%;
     }
+	
+	input[type=submit]:hover {
+		background-color: #dddddd;
+	}
 
     .place-holder-center::placeholder {
         text-align: center;
