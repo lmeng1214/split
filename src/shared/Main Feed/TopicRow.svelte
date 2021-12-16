@@ -3,11 +3,6 @@
 
 	export let articles;
 	export let topic_id;
-
-	let list = [];
-	for (let i = 0; i < articles.length; i++) {
-		if(!list.includes(articles.topic_id)) list.push(articles.topic_id)
-	}
 </script>
 
 <tr>
@@ -17,7 +12,7 @@
 	</td>
 	{#each articles as article}
 		{#if article.topic_id === topic_id}
-			<Article {article} />
+			<td><Article {article} /></td>
 		{/if}
 	{/each}
 </tr>

@@ -1,21 +1,13 @@
 <script lang="ts">
-	import axios from 'axios';
-
 	import NavBar from '../shared/NavBar.svelte';
 	import Feed from '../shared/Main Feed/Feed.svelte';
 
 	let articles;
-
-	axios.get("http://localhost:8080/").then(function (res) {
-		console.log("INDEX >> Get Articles");
-		articles = res.data;
-		console.log(articles)
-	})
 </script>
 
 <main>
-	<NavBar bind:articles={articles} />
-	<Feed {articles}/>
+	<NavBar bind:articles />
+	<Feed bind:articles />
 </main>
 
 <style>
