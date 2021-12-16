@@ -12,7 +12,7 @@
 	</td>
 	{#each articles as article}
 		{#if article.topic_id === topic_id}
-			<td><Article {article} /></td>
+			<Article {article} />
 		{/if}
 	{/each}
 </tr>

@@ -1,18 +1,8 @@
 <script>
-	import axios from 'axios';
-
 	import TopicRow from './TopicRow.svelte';
 
 	export let articles;
-
-	let numTopics = 0;
-
-	$: axios.get('http://localhost:8080/numTopics')
-		.then(function (res) {
-			numTopics = res.data.rows[0].count;
-			console.log(numTopics);
-	})
-
+	export let numTopics;
 </script>
 
 {#if articles}

@@ -2,12 +2,20 @@
 	import SearchBar from './SearchBar.svelte';
 
 	export let articles;
+	export let numTopics;
 </script>
 
 <table>
 	<tr id="form3">
 		<td class='logo'><a class='logo' href='/'><span style='color: #0050C8'>|</span>SP <span style='color: #D70000'>|</span>IT</a></td>
-		<td><SearchBar bind:articles /></td>
+		<td>
+			<table>
+				<tr><SearchBar bind:articles /></tr>
+				{#if articles}{#if numTopics !== 0}
+					<tr>{numTopics} topics, {articles.length} results</tr>
+				{/if}{/if}
+			</table>
+		</td>
 		<td>Your Account Component Here!</td>
 	</tr>
 </table>

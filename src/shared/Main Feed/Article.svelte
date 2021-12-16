@@ -58,9 +58,12 @@
 		<tr>
 			Published {dayjs(article.pub_date).format("MMM D, YYYY h:mm a")}
 		</tr>
-<!--		<tr>-->
-<!--			Source id: {article.source_id}-->
-<!--		</tr>-->
+		<tr>
+			Bias: {article.bias < 0 ? "Left" : article.bias > 0 ? "Right" : "Neutral"}
+		</tr>
+		<tr>
+			Popularity: {article.popularity === null ? 0 : article.popularity} out of 3
+		</tr>
 		<button style='background-color:yellow' id={article.article_id} on:click={(e) => starFunc(e.target.id)}>STAR</button>
 	</table>
 </td>
